@@ -1,6 +1,6 @@
 # lessphp for Zend Framework
 
-Tools for autocompiling less in Zend Framework based on lessphp (http://leafo.net/lessphp/)
+Plugin for autocompiling less in Zend Framework based on lessphp (http://leafo.net/lessphp/)
 
 ## Installation
 
@@ -9,7 +9,7 @@ Tools for autocompiling less in Zend Framework based on lessphp (http://leafo.ne
 	* clone the repo `git://github.com/ludmanp/lessphp-for-Zend-Framework.git`
 2. Copy folder Less to your library folder
 3. Copy `LessAutoCompilePlugin.php` from plugins folder to your plugins folder
-4. In `Zend_Registry` have be registered config with name `cnf` containing
+4. In `Zend_Registry` have been registered config with name `cnf` containing
 
 	```
 	'less' => array(
@@ -69,5 +69,5 @@ If `less->outPath` and `less->css_ini` folder are wratable it will work.
 	
 ## References
 
-+ For more info on lessphp see http://leafo.net/lessphp/ , full documentation http://leafo.net/lessphp/docs/
-+ For more information on `.less` see http://lesscss.org/
++ For more info on **lessphp** see http://leafo.net/lessphp/ , full documentation http://leafo.net/lessphp/docs/
++ For more information on *less* see http://lesscss.org/
