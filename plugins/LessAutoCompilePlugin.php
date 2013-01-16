@@ -31,8 +31,8 @@ class LessAutoCompilePlugin extends Zend_Controller_Plugin_Abstract {
 		if($cnf->less->development && !empty($cnf->less->files)){
 			$this->less = new Less_Lessc();
 			$files = explode(",", $cnf->less->files);
-			if(isset($cnf->less->formater))
-				$this->less->setFormatter($cnf->less->formater);
+			if(isset($cnf->less->formatter))
+				$this->less->setFormatter($cnf->less->formatter);
 			if(isset($cnf->less->css_ini)){
 				$css_ini = $this->_root_path . $cnf->less->css_ini;
 				if(file_exists($css_ini)){
