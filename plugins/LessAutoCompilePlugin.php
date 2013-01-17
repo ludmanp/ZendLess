@@ -65,7 +65,7 @@ class LessAutoCompilePlugin extends Zend_Controller_Plugin_Abstract {
 			$cache = $this->getCache($file);
 			// if cache data empty put input file name as data
 			if(empty($cache))
-				$cache = $inputFile;
+				$cache = $this->getInputFileName($file);
 			// Compilation
 			$newCache = $this->less->cachedCompile($cache);
 			
