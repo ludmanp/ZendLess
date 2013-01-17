@@ -5,8 +5,8 @@ Plugin for autocompiling less in Zend Framework based on lessphp (http://leafo.n
 ## Installation
 
 1. Get source code using one of options:
-	* download latest release [Download the latest release](https://github.com/ludmanp/lessphp-for-Zend-Framework/zipball/master) or
-	* clone the repo `git://github.com/ludmanp/lessphp-for-Zend-Framework.git`
+	* download latest release [Download the latest release](https://github.com/ludmanp/ZendLess/zipball/master) or
+	* clone the repo `git://github.com/ludmanp/ZendLess.git`
 2. Copy folder Less to your library folder
 3. Copy `LessAutoCompilePlugin.php` from plugins folder to your plugins folder
 4. In `Zend_Registry` have been registered config with name `cnf` containing
@@ -22,7 +22,7 @@ Plugin for autocompiling less in Zend Framework based on lessphp (http://leafo.n
 	),
 	```
 	
-	If you use other name for config change in `LessAutoCompilePlugin.php` in `routeStartup`
+	If you use other name for config change it in `LessAutoCompilePlugin.php` in `routeStartup`
 
 5. Register in bootstrap `LessAutoCompilePlugin.php` plugin 
 	
@@ -37,7 +37,7 @@ Plugin for autocompiling less in Zend Framework based on lessphp (http://leafo.n
 $view->addHelperPath("Less/View/Helper", "Less_View_Helper");
 ```
 	
-If `less->outPath` and `less->css_ini` folder are wratable it will work.
+If `less->outPath` and `less->css_ini` folders are wratable it will work.
 
 ## Parameters
 
@@ -48,7 +48,7 @@ If `less->outPath` and `less->css_ini` folder are wratable it will work.
 + **outPath** - path where to save compiled `.css` files.
 + **css_ini** - path to file for saving lessphp cached information. 
 	
-	**Note!** if this parameter is emty or not defined less compilator will work and cached info will try to save into `less->path` folder for each `.less` file separatle with `.cache` extension. 
+	**Note!** if this parameter is empty or not defined less compilator will work and cached info will try to save into `less->path` folder for each `.less` file separatle with `.cache` extension. 
 
 ## Main features
 
