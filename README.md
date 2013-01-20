@@ -2,6 +2,8 @@
 
 Plugin for autocompiling less in Zend Framework based on lessphp (http://leafo.net/lessphp/)
 
+[Home page](http://zendless.cr-a.net/)
+
 ## Installation
 
 1. Get source code using one of options:
