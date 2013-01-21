@@ -28,20 +28,20 @@ class LessAutoCompilePlugin extends Zend_Controller_Plugin_Abstract {
 		if(isset($cnf->path->public))
 			$this->setPublicPath($cnf->path->public);
 
+		if(isset($cnf->less->css_ini)){
+			$css_ini = $this->_root_path . $cnf->less->css_ini;
+			if(file_exists($css_ini)){
+				$css_config = new Zend_Config_Ini($css_ini, null, array('skipExtends' => true,'allowModifications' => true));
+			}else{
+				$css_config = new Zend_Config(array(), true);
+			}
+			$this->css_cnf = $css_config;
+		}
 		if($cnf->less->development && !empty($cnf->less->files)){
 			$this->less = new Less_Lessc();
 			$files = explode(",", $cnf->less->files);
-			if(isset($cnf->less->formatter))
-				$this->less->setFormatter($cnf->less->formatter);
-			if(isset($cnf->less->css_ini)){
-				$css_ini = $this->_root_path . $cnf->less->css_ini;
-				if(file_exists($css_ini)){
-					$css_config = new Zend_Config_Ini($css_ini, null, array('skipExtends' => true,'allowModifications' => true));
-				}else{
-					$css_config = new Zend_Config(array(), true);
-				}
-				$this->css_cnf = $css_config;
-			}
+			if(isset($cnf->less->formater))
+				$this->less->setFormatter($cnf->less->formater);
 			$this->css_ini_updates = false;
 			foreach($files as $file){
 				$this->fileCompilation($file);
