@@ -20,6 +20,9 @@ class LessAutoCompilePlugin extends Zend_Controller_Plugin_Abstract {
 		$this->autoCompile();
 	}
 		
+	/**
+	 * 
+	 */
 	public function autoCompile(){
 		$cnf = $this->cnf;
 
@@ -47,6 +50,8 @@ class LessAutoCompilePlugin extends Zend_Controller_Plugin_Abstract {
 				$this->fileCompilation($file);
 			}
 			if(isset($css_ini) && $this->css_ini_updates){
+// Zend_Debug::dump($css_config);
+// exit();
 				$writer = new Zend_Config_Writer_Ini(array('config' => $css_config, 'filename' => $css_ini));
 				$writer
 					// ->setRenderWithoutSections()
@@ -93,7 +98,9 @@ class LessAutoCompilePlugin extends Zend_Controller_Plugin_Abstract {
 			// if there is cache
 			if(isset($css_config->$absOutputFile->cache)){
 				// get it
-				$cache = unserialize($css_config->$absOutputFile->get('cache', serialize(array())));
+// Zend_Debug::dump($css_config->$absOutputFile->get('cache', serialize(array())));exit();
+// Zend_Debug::dump(html_entity_decode($css_config->$absOutputFile->get('cache', serialize(array())), ENT_COMPAT, Zend_Registry::get('cnf')->common->charset));exit();
+				$cache = unserialize(html_entity_decode($css_config->$absOutputFile->get('cache', serialize(array())), ENT_QUOTES, Zend_Registry::get('cnf')->common->charset));
 				// id root different unset cahce data
 				if($cache['root']!=$inputFile)
 					$cache = null;
@@ -135,8 +142,8 @@ class LessAutoCompilePlugin extends Zend_Controller_Plugin_Abstract {
 				// we will not save compiled data into config
 				unset($newCache['compiled']);
 
-				// set cache serialized value to config
-				$css_config->$absOutputFile->cache = serialize($newCache);
+				// set cache serialized value to config, make html encoding to avoid double quotes in ini file content
+				$css_config->$absOutputFile->cache = htmlentities(serialize($newCache), ENT_QUOTES, Zend_Registry::get('cnf')->common->charset );
 				// and put flag congig updated
 				$this->css_ini_updates = true;
 			}
